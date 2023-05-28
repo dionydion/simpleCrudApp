@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
+@Repository // changes this class to a repository
 public interface UserRepo extends JpaRepository<User, Integer> {
     Optional<User> findByName(String name);
     void deleteByName(String name);

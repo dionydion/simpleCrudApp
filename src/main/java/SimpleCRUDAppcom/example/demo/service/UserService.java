@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service // labels this class a service layer object
 public class UserService {
 
-    @Autowired
+    @Autowired // inject the class that you want to use
     public UserRepo userRepo;
 
     public List<User> getAllUsers() {
@@ -38,7 +38,7 @@ public class UserService {
 
     }
 
-    @Transactional
+    @Transactional // RollBack SQL
     public User deleteUser(String name) {
         Optional<User> existingUser = userRepo.findByName(name);
         if (existingUser.isPresent()) {
@@ -46,5 +46,13 @@ public class UserService {
             return existingUser.get();
         }
         return null;
+    }
+
+    public void hello(){
+        Optional<Integer> optional = Optional.of(1);
+        if (optional.isPresent()){
+            System.out.println("hello");
+        }
+        System.out.println("goodbye");
     }
 }
